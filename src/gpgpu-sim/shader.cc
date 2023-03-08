@@ -1025,6 +1025,8 @@ void exec_shader_core_ctx::func_exec_inst(warp_inst_t &inst) {
   if (inst.is_load() || inst.is_store()) {
     inst.generate_mem_accesses();
     // inst.print_m_accessq();
+    // enming
+    this->m_gpu->tol_mem_access_num += inst.print_m_accessq_size();
   }
 }
 

@@ -605,6 +605,9 @@ class gpgpu_t {
   void memcpy_from_gpu(void *dst, size_t src_start_addr, size_t count);
   void memcpy_gpu_to_gpu(size_t dst, size_t src, size_t count);
 
+  // enming
+  unsigned long long tol_mem_access_num;
+
   class memory_space *get_global_memory() {
     return m_global_mem;
   }
@@ -1114,6 +1117,15 @@ class warp_inst_t : public inst_t {
       }
     }
   }
+  // enming
+  int print_m_accessq_size() {
+    if (accessq_empty()) {
+      return 0;
+    } else {
+      return m_accessq.size();
+    }
+  }
+
   struct transaction_info {
     std::bitset<4> chunks;  // bitmask: 32-byte chunks accessed
     mem_access_byte_mask_t bytes;

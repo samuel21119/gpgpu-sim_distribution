@@ -203,6 +203,7 @@ gpgpu_t::gpgpu_t(const gpgpu_functional_sim_config &config, gpgpu_context *ctx)
   if (m_function_model_config.get_ptx_inst_debug_to_file() != 0)
     ptx_inst_debug_file =
         fopen(m_function_model_config.get_ptx_inst_debug_file(), "w");
+  tol_mem_access_num = 0;
 
   gpu_sim_cycle = 0;
   gpu_tot_sim_cycle = 0;

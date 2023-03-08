@@ -1090,6 +1090,10 @@ bool gpgpu_sim::active() {
 
 void gpgpu_sim::init() {
   // run a CUDA grid on the GPU microarchitecture simulator
+
+  // enming
+  tol_mem_access_num = 0;
+
   gpu_sim_cycle = 0;
   gpu_sim_insn = 0;
   last_gpu_sim_insn = 0;
@@ -1145,6 +1149,9 @@ void gpgpu_sim::update_stats() {
   partiton_reqs_in_parallel_util_total += partiton_reqs_in_parallel_util;
   gpu_tot_sim_cycle_parition_util += gpu_sim_cycle_parition_util;
   gpu_tot_occupancy += gpu_occupancy;
+
+  // enming
+  tol_mem_access_num = 0;
 
   gpu_sim_cycle = 0;
   partiton_reqs_in_parallel = 0;
@@ -1352,6 +1359,9 @@ void gpgpu_sim::gpu_print_stat() {
 
   std::string kernel_info_str = executed_kernel_info_string();
   fprintf(statfout, "%s", kernel_info_str.c_str());
+
+  // enming
+  printf("tol_mem_access_num = %lld\n", tol_mem_access_num);
 
   printf("gpu_sim_cycle = %lld\n", gpu_sim_cycle);
   printf("gpu_sim_insn = %lld\n", gpu_sim_insn);
